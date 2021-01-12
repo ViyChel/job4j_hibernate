@@ -25,6 +25,9 @@
         <mapping class="ru.job4j.hibernate.lazy.Brand"/>
         <mapping class="ru.job4j.hibernate.lazy.Model"/>
         <mapping class="ru.job4j.hibernate.date.Product"/>
+        <mapping class="ru.job4j.hibernate.mapping.Car"/>
+        <mapping class="ru.job4j.hibernate.mapping.Engine"/>
+        <mapping class="ru.job4j.hibernate.mapping.Driver"/>
 
 
 
