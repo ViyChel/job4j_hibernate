@@ -17,10 +17,13 @@
         <property name="format_sql">true</property>
         <property name="use_sql_comments">true</property>
 
-        <mapping class="ru.job4j.hibernate.onetomany.Brand"/>
-        <mapping class="ru.job4j.hibernate.onetomany.Model"/>
+<!--        <mapping class="ru.job4j.hibernate.onetomany.Brand"/>-->
+<!--        <mapping class="ru.job4j.hibernate.onetomany.Model"/>-->
         <mapping class="ru.job4j.hibernate.manytomany.Author"/>
         <mapping class="ru.job4j.hibernate.manytomany.Book"/>
+        <mapping class="ru.job4j.hibernate.lazy.Brand"/>
+        <mapping class="ru.job4j.hibernate.lazy.Model"/>
+
 
 
 
