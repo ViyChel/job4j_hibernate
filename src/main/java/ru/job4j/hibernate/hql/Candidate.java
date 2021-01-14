@@ -1,7 +1,6 @@
 package ru.job4j.hibernate.hql;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -14,7 +13,7 @@ import javax.persistence.*;
  */
 @Data
 @Entity
-@Table (name = "candidates")
+@Table(name = "candidates")
 public class Candidate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +21,9 @@ public class Candidate {
     private String name;
     private String experience;
     private int salary;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private JobBase jobBase;
 
     public static Candidate of(String name, String experience, int salary) {
         Candidate candidate = new Candidate();

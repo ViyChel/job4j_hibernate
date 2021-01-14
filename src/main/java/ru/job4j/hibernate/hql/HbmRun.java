@@ -17,6 +17,7 @@ import org.hibernate.query.Query;
  */
 public class HbmRun {
     public static void main(String[] args) {
+        Candidate rsl = null;
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure().build();
         try {
@@ -24,7 +25,7 @@ public class HbmRun {
             Session session = sf.openSession();
             session.beginTransaction();
 
-            Candidate one = Candidate.of("Alex", "Hibernate", 50000);
+            /*Candidate one = Candidate.of("Alex", "Hibernate", 50000);
             Candidate two = Candidate.of("Nikolay", "Spring", 60000);
             Candidate three = Candidate.of("Nikita", "Servlets", 45000);
             session.save(one);
@@ -52,7 +53,26 @@ public class HbmRun {
 
             session.createQuery("delete from Candidate where id = :fId")
                     .setParameter("fId", 3)
-                    .executeUpdate();
+                    .executeUpdate();*/
+
+            /*Vacancy one = Vacancy.of("Junior", "Servlets", 50000);
+            Vacancy two = Vacancy.of("Middle", "Hibernate", 60000);
+            Vacancy three = Vacancy.of("Senior", "Spring", 45000);
+            session.save(one);
+            session.save(two);
+            session.save(three);
+            JobBase jobBase = JobBase.of("Enterprise");
+            jobBase.addVacancy(one);
+            jobBase.addVacancy(two);
+            jobBase.addVacancy(three);
+            session.save(jobBase);*/
+
+            rsl = session.createQuery(
+                    "select distinct c from Candidate c "
+                            + "join fetch c.jobBase jb "
+                            + "join fetch jb.vacancies v "
+                            + "where c.id = :sId", Candidate.class
+            ).setParameter("sId", 1).uniqueResult();
 
             session.getTransaction().commit();
             session.close();
@@ -61,5 +81,6 @@ public class HbmRun {
         } finally {
             StandardServiceRegistryBuilder.destroy(registry);
         }
+        System.out.println(rsl);
     }
 }
