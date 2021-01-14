@@ -28,6 +28,7 @@
         <mapping class="ru.job4j.hibernate.mapping.Car"/>
         <mapping class="ru.job4j.hibernate.mapping.Engine"/>
         <mapping class="ru.job4j.hibernate.mapping.Driver"/>
+        <mapping class="ru.job4j.hibernate.hql.Candidate"/>
 
 
 
